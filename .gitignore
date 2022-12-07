@@ -1,0 +1,4 @@
+/privatevars.py
+*.docx
+*.pdf
+__pycache__/*
