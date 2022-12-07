@@ -27,7 +27,7 @@ yn = ["Yes", "No"]
 # Who are we addressing the letter to?
 ## Gather the first name, if applicable
 while True:
-    firstname = input("What is the hiring manager's FIRST name? \nLeave blank if unknown or if addressing to the company's Hiring Team. \n\n").lstrip(" ").rstrip(" ").capitalize()
+    firstname = input("What is the hiring manager's FIRST name? \nLeave blank if unknown or if addressing to the company's Hiring Team. \n\n").lstrip(" ").rstrip(" ").title()
     ## Determine if a space after the firstname is necessary (no space is needed if there is no first name) 
     if firstname != "":
         firstnamespace = " "
@@ -40,7 +40,7 @@ while True:
 
 ## Gather the last name, if applicable
 while True:
-    lastname = input("What is the hiring manager's LAST name, OR, if addressing to a HIRING TEAM, what is the team called? \nLeave blank if unknown. \n\n").lstrip(" ").rstrip(" ").capitalize()
+    lastname = input("What is the hiring manager's LAST name, OR, if addressing to a HIRING TEAM, what is the team called? \nLeave blank if unknown. \n\n").lstrip(" ").rstrip(" ").title()
     ## Determine if a space after the last name is necessary (no space is needed if there is no last name) 
     if lastname != "":
         lastnamespace = " "
