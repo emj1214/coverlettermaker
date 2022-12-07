@@ -62,7 +62,7 @@ while True:
             prefix = prefix + "."
     else:
         prefixspace = ""
-    correct = enquiries.choose(f"\nIs '{prefix + firstnamespace + firstname + lastnamespace + lastname}' correct so far?", yn)
+    correct = enquiries.choose(f"\nIs '{prefix + prefixspace + firstname + firstnamespace + lastname}' correct so far?", yn)
     if correct == "Yes":
         print("\n\n------------\n\n")
         break
@@ -221,7 +221,7 @@ date = doc.add_paragraph(f'{todaystr}')
 doc.add_paragraph()
 
 # Fill out letter address 
-managerinfo = doc.add_paragraph(f"{prefix} {firstname} {lastname} \n{company} \n{address[0]} \n{address[1]}")
+managerinfo = doc.add_paragraph(f"{prefix + prefixspace + firstname + firstnamespace + lastname} \n{company} \n{address[0]} \n{address[1]}")
 
 # Extra space (empty paragraph)
 doc.add_paragraph()
