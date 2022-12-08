@@ -156,7 +156,7 @@ while True:
 
 # Gathering the company name
 while True:
-    company = input("What is the company called? \n\n")
+    company = input("What is the company called? \n\n").lstrip().rstrip()
     correct = enquiries.choose(f"\nIs this correct: \n{company}", yn)
     if correct == "Yes":
         print("\n\n------------\n\n")
