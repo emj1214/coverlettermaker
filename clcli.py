@@ -287,7 +287,7 @@ if hardskills == "Yes":
             break
 
         except IndexError as e:
-            print("Oops! You didn't select a minimum of THREE values. Try it again.")
+            print("Oops! Something is broken. Try again.")
 
 # Fill in the conclusion paragraph with the user's contact info
 conclusion = doc.add_paragraph(
