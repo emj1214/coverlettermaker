@@ -217,9 +217,6 @@ today = datetime.date.today()
 todaystr = today.strftime("%d %B %Y")
 date = doc.add_paragraph(f'{todaystr}')
 
-# Extra space (empty paragraph)
-doc.add_paragraph()
-
 # Fill out letter address 
 managerinfo = doc.add_paragraph(f"{prefix + prefixspace + firstname + firstnamespace + lastname} \n{company} \n{address[0]} \n{address[1]}")
 
@@ -262,28 +259,35 @@ if hardskills == "Yes":
             # Fill in opening for the hard skills / my achievements paragraph
             doc.add_paragraph("My hard skills (and the projects for which I used them) that you may find relevant to your team include: ")
 
-            # Create the first bullet point by writing the first half of the sentence, the hyperlinked text using the appropriate URL from the links list, and the second half of the sentence if applicable
-            bullet1 = doc.add_paragraph(style='List Bullet')
-            bullet1.add_run(f'{privatevars.achieveopts[privatevars.achieveoptslist.index(achieve[0])][0]}')
-            hyperlink.add_hyperlink(paragraph=bullet1,text=f'{privatevars.achieveopts[privatevars.achieveoptslist.index(achieve[0])][1]}', url=f'{links[0]}')
-            bullet1.add_run(f'{privatevars.achieveopts[privatevars.achieveoptslist.index(achieve[0])][2]}')
+            # # Create the first bullet point by writing the first half of the sentence, the hyperlinked text using the appropriate URL from the links list, and the second half of the sentence if applicable
+            # bullet1 = doc.add_paragraph(style='List Bullet')
+            # bullet1.add_run(f'{privatevars.achieveopts[privatevars.achieveoptslist.index(achieve[0])][0]}')
+            # hyperlink.add_hyperlink(paragraph=bullet1,text=f'{privatevars.achieveopts[privatevars.achieveoptslist.index(achieve[0])][1]}', url=f'{links[0]}')
+            # bullet1.add_run(f'{privatevars.achieveopts[privatevars.achieveoptslist.index(achieve[0])][2]}')
 
-            # Create the second bullet point by writing the first half of the sentence, the hyperlinked text using the appropriate URL from the links list, and the second half of the sentence if applicable
-            bullet2 = doc.add_paragraph(style='List Bullet')
-            bullet2.add_run(f'{privatevars.achieveopts[privatevars.achieveoptslist.index(achieve[1])][0]}')
-            hyperlink.add_hyperlink(paragraph=bullet2,text=f'{privatevars.achieveopts[privatevars.achieveoptslist.index(achieve[1])][1]}', url=f'{links[1]}')
-            bullet2.add_run(f'{privatevars.achieveopts[privatevars.achieveoptslist.index(achieve[1])][2]}')
+            # # Create the second bullet point by writing the first half of the sentence, the hyperlinked text using the appropriate URL from the links list, and the second half of the sentence if applicable
+            # bullet2 = doc.add_paragraph(style='List Bullet')
+            # bullet2.add_run(f'{privatevars.achieveopts[privatevars.achieveoptslist.index(achieve[1])][0]}')
+            # hyperlink.add_hyperlink(paragraph=bullet2,text=f'{privatevars.achieveopts[privatevars.achieveoptslist.index(achieve[1])][1]}', url=f'{links[1]}')
+            # bullet2.add_run(f'{privatevars.achieveopts[privatevars.achieveoptslist.index(achieve[1])][2]}')
 
-            # Create the third bullet point by writing the first half of the sentence, the hyperlinked text using the appropriate URL from the links list, and the second half of the sentence if applicable
-            bullet3 = doc.add_paragraph(style='List Bullet')
-            bullet3.add_run(f'{privatevars.achieveopts[privatevars.achieveoptslist.index(achieve[2])][0]}')
-            hyperlink.add_hyperlink(paragraph=bullet3,text=f'{privatevars.achieveopts[privatevars.achieveoptslist.index(achieve[2])][1]}', url=f'{links[2]}')
-            bullet3.add_run(f'{privatevars.achieveopts[privatevars.achieveoptslist.index(achieve[2])][2]}')
+            # # Create the third bullet point by writing the first half of the sentence, the hyperlinked text using the appropriate URL from the links list, and the second half of the sentence if applicable
+            # bullet3 = doc.add_paragraph(style='List Bullet')
+            # bullet3.add_run(f'{privatevars.achieveopts[privatevars.achieveoptslist.index(achieve[2])][0]}')
+            # hyperlink.add_hyperlink(paragraph=bullet3,text=f'{privatevars.achieveopts[privatevars.achieveoptslist.index(achieve[2])][1]}', url=f'{links[2]}')
+            # bullet3.add_run(f'{privatevars.achieveopts[privatevars.achieveoptslist.index(achieve[2])][2]}')
+
+            for val in achieve:
+                i = achieve.index(val)
+                bullet = doc.add_paragraph(style='List Bullet')
+                bullet.add_run(f'{privatevars.achieveopts[privatevars.achieveoptslist.index(achieve[i])][0]}')
+                hyperlink.add_hyperlink(paragraph=bullet,text=f'{privatevars.achieveopts[privatevars.achieveoptslist.index(achieve[i])][1]}', url=f'{links[i]}')
+                bullet.add_run(f'{privatevars.achieveopts[privatevars.achieveoptslist.index(achieve[i])][2]}')
 
             break
 
         except IndexError as e:
-            print("Oops! You didn't select THREE values. Try it again.")
+            print("Oops! You didn't select a minimum of THREE values. Try it again.")
 
 # Fill in the conclusion paragraph with the user's contact info
 conclusion = doc.add_paragraph(
@@ -295,6 +299,7 @@ doc.add_paragraph()
 
 # Signature
 sincerely = doc.add_paragraph("Sincerely,")
+sigimg = doc.add_picture("signature.png", width=Inches(2.3), height=Inches(0.7))
 signature = doc.add_paragraph(f"{myprefix} {myfirstname} {mylastname} \n{mypronouns} \n{myphone} \n{myemail}")
 
 # Save doc to current directory
