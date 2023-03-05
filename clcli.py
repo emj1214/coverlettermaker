@@ -239,7 +239,7 @@ body1 = doc.add_paragraph(
 
 # Fill in the second body paragraph about why the position would benefit me
 body2 = doc.add_paragraph(
-    f"The job description {found} that led me to your company highlighted several of my own values as those emphasized in the workplace, and as a part of {company}, it would be natural for me to exercise my skills with your team. {learningsent}" 
+    f"The job description {found} that led me to your company highlighted several of my own values as those emphasized in the workplace, and as a part of {company}, it would be natural for me to exercise my skills and strive to strengthen your team. {learningsent}" 
 )
 
 # Ask if the user wants to use the hard skills bullet points, and if so, which they'd like to use
@@ -248,7 +248,7 @@ if hardskills == "Yes":
     # provides hard skills as options to select
     while True:
         try:
-            achieve = enquiries.choose("Which THREE hard skills?", privatevars.achieveoptslist, multi=True)
+            achieve = enquiries.choose("Which hard skills?", privatevars.achieveoptslist, multi=True)
             links = []
 
             # for each selected hard skill, the respective URL to see the project associated with the skill is added to our temporary links list
@@ -291,7 +291,7 @@ if hardskills == "Yes":
 
 # Fill in the conclusion paragraph with the user's contact info
 conclusion = doc.add_paragraph(
-    f"When it is most convenient for you, I would appreciate the opportunity to discuss where my skills could benefit your company. I can be reached at {myemail} or at {myphone}. Thank you so much for your consideration, and I look forward to hearing from you soon."
+    f"When it is most convenient for you, I would appreciate the opportunity to discuss how my skills could benefit {company} and the possibility of continuing my career with your team. I can be reached at {myemail} or at {myphone}. Thank you so much for your consideration, and I look forward to hearing from you soon."
 )
 
 # Extra space (empty paragraph)
